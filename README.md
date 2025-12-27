@@ -2,8 +2,14 @@
 
 ![VS Code](https://img.shields.io/badge/VS%20Code-Extension-blue)
 ![TypeScript](https://img.shields.io/badge/TypeScript-5-blue)
-![Downloads](https://img.shields.io/badge/Downloads-1K-brightgreen)
 ![License](https://img.shields.io/badge/License-MIT-yellow)
+[![Marketplace](https://img.shields.io/badge/VS%20Marketplace-Install-blueviolet)](
+https://marketplace.visualstudio.com/items?itemName=beni-f.json-formatter-validator-extension
+)
+
+🔗 **Marketplace Page:**  
+https://marketplace.visualstudio.com/items?itemName=beni-f.json-formatter-validator-extension
+
 
 **The ultimate JSON toolkit for VS Code** — format, validate, minify, sort keys, and copy formatted JSON with real-time error highlighting and auto-format on save.
 
@@ -31,25 +37,29 @@
 
 ## 1\. Install
 
-`1. VS Code → Extensions (Ctrl+Shift+X)
+`text
+1. VS Code → Extensions (Ctrl+Shift+X)
 2. Search: "JSON Formatter Validator"
 3. Install → Reload
 `
 
 ## 2\. Basic Usage
 
-`Open any .json file → Ctrl+Shift+P → "JSON Formatter Validator: Format JSON"
+`text
+Open any .json file → Ctrl+Shift+P → "JSON Formatter Validator: Format JSON"
 `
 
 ## 3\. Auto-Format (Default)
 
-`1. Edit JSON → Ctrl+S
+`text
+1. Edit JSON → Ctrl+S
 2. Auto-formatted with 2 spaces
 `
 
 ## Commands (Ctrl+Shift+P)
 
-`JSON Formatter Validator: Format JSON          ← Shift+Alt+F
+`text
+JSON Formatter Validator: Format JSON          ← Shift+Alt+F
 JSON Formatter Validator: Validate JSON        ← Status bar click
 JSON Formatter Validator: Minify JSON          ← One line
 JSON Formatter Validator: Sort Keys            ← Alphabetical
@@ -70,52 +80,64 @@ Search **"json-formatter-validator"**:
 
 **Example `.vscode/settings.json`:**
 
-`{
+```json
+{
   "json-formatter-validator.formatOnSave": true,
   "json-formatter-validator.indentSize": 4,
   "editor.formatOnSave": true
 }
-`
+```
 
 ## Testing Guide
 
 ## Test Files (`test/` folder)
 
-`test/valid.json      → Format/Minify/Sort
+```bash
+test/valid.json      → Format/Minify/Sort
 test/invalid.json    → Error highlighting
 test/unsorted.json   → Key sorting
 test/large.json      → Performance (1MB+)
-`
+```
 
 ## 1. **Format Test**
 
-`{"name":"John","age":30} → Ctrl+S → {
+```json
+{"name":"John","age":30} 
+```
+- After Ctrl+S:
+```json 
+{
   "name": "John",
   "age": 30
 }
-`
+```
 
 ## 2. **Validation Test**
 
-`` {"name":"John", age:30} → Red squiggle on `age` → Fix → 🟢
- ``
+```
+{"name":"John", age:30}
+```
+→ Red squiggle on `age` → Fix → 🟢
 
 ## 3. **Status Bar**
 
-`Valid JSON → Click to re-validate
+```
+Valid JSON → Click to re-validate
 Invalid → Precise error location
-`
+```
 
 ## Before & After
 
 **UGLY:**
 
-`{"user":{"name":"John","age":30,"settings":{"theme":"dark"}}}
-`
+```json
+{"user":{"name":"John","age":30,"settings":{"theme":"dark"}}}
+```
 
 **FORMATTED (Ctrl+S):**
 
-`{
+```json
+{
   "user": {
     "name": "John",
     "age": 30,
@@ -124,16 +146,18 @@ Invalid → Precise error location
     }
   }
 }
-`
+```
 
 **MINIFIED:**
 
-`{"user":{"name":"John","age":30,"settings":{"theme":"dark"}}}
-`
+```json
+{"user":{"name":"John","age":30,"settings":{"theme":"dark"}}}
+```
 
 **SORTED KEYS:**
 
-`{
+```json
+{
   "age": 30,
   "name": "John",
   "settings": {
@@ -141,11 +165,12 @@ Invalid → Precise error location
   },
   "user": {}
 }
-`
+```
 
 ## Architecture
 
-`src/
+```pgsql
+src/
 ├── extension.ts          # Main activation
 ├── commands/            # Format, minify, sort
 │   ├── formatting.ts
@@ -156,7 +181,7 @@ Invalid → Precise error location
 │   └── formatter.ts
 └── utils/              # Event listeners, helpers
     └── helper.ts
-`
+```
 
 **Modular Design:**
 
@@ -166,7 +191,8 @@ Invalid → Precise error location
 
 ## Development
 
-`# Clone & Install
+```bash
+# Clone & Install
 git clone <repo>
 cd json-formatter-validator
 npm install
@@ -179,14 +205,15 @@ F5 (Debug) or Ctrl+F5 (Run)
 
 # Package for Marketplace
 npm run package
-`
+```
 
 ## Debug Mode (F5)
 
-`1. F5 → Opens Extension Development Host
+```pgsql
+1. F5 → Opens Extension Development Host
 2. Create .json file → Test all commands
 3. Output panel → "JSON Formatter Validator" → See logs
-`
+```
 
 ## Performance
 
