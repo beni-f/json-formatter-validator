@@ -58,6 +58,26 @@
             {
                 "command": "json-formatter-validator.toggleComments",
                 "title": "JSON Formatter Validator: Toggle Comments Mode"
+            },
+            {
+                "command": "json-formatter-validator.toTypescript",
+                "title": "JSON → TypeScript Interface"
+            },
+            {
+                "command": "json-formatter-validator.toGo",
+                "title": "JSON → Go Structs"
+            },
+            {
+                "command": "json-formatter-validator.toSql",
+                "title": "JSON → SQL Schema"
+            },
+            {
+                "command": "json-formatter-validator.toRust",
+                "title": "JSON → Rust Structs"
+            },
+            {
+                "command": "json-formatter-validator.compileJson",
+                "title": "🚀 JSON Compiler Pipeline"
             }
         ]
     },

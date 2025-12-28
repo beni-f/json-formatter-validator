@@ -4,6 +4,7 @@ import { registerClipboardCommands } from './commands/clipboard';
 import { registerValidationCommands, validateCurrentEditor } from './validation/validator';
 import { registerFormatterProvider } from './providers/formatter';
 import { setupEventListeners } from './utils/helper';
+import { registerCompileCommand } from './commands/compile-command';
 
 let diagnosticCollection: vscode.DiagnosticCollection;
 
@@ -18,6 +19,8 @@ export function activate(context: vscode.ExtensionContext) {
     registerClipboardCommands(context, diagnosticCollection);
     registerValidationCommands(context, diagnosticCollection);
     registerFormatterProvider(context);
+    registerConverterCommands(context);
+    registerCompileCommand(context);
 
     // Setup event listeners (your existing validation)
     setupEventListeners(context, diagnosticCollection, validateCurrentEditor);
@@ -78,3 +81,63 @@ async function formatJsonForDocument(document: vscode.TextDocument) {
         // Silent fail - don't interrupt user workflow
     }
 }
+
+import { JsonToXConverter } from './converters/json-to-x';
+
+export function registerConverterCommands(context: vscode.ExtensionContext) {
+    const converter = new JsonToXConverter();
+
+    context.subscriptions.push(
+        // JSON → TypeScript
+        vscode.commands.registerCommand('json-formatter-validator.toTypescript', async () => {
+            const editor = vscode.window.activeTextEditor;
+            if (!editor?.document || editor.document.languageId !== 'json') {
+                vscode.window.showErrorMessage('Open a JSON file first');
+                return;
+            }
+
+            try {
+                const jsonObj = JSON.parse(editor.document.getText());
+                const tsCode = converter.toTypeScript(jsonObj);
+
+                await vscode.env.clipboard.writeText(tsCode);
+                vscode.window.showInformationMessage('TypeScript interface copied! 📋');
+            } catch (error) {
+                vscode.window.showErrorMessage('Invalid JSON');
+            }
+        }),
+
+        // JSON → Go
+        vscode.commands.registerCommand('json-formatter-validator.toGo', async () => {
+            const editor = vscode.window.activeTextEditor;
+            if (!editor?.document || editor.document.languageId !== 'json') return;
+
+            try {
+                const jsonObj = JSON.parse(editor.document.getText());
+                const goCode = converter.toGo(jsonObj);
+
+                await vscode.env.clipboard.writeText(goCode);
+                vscode.window.showInformationMessage('Go structs copied! 🐹');
+            } catch {
+                vscode.window.showErrorMessage('Invalid JSON');
+            }
+        }),
+
+        // JSON → SQL
+        vscode.commands.registerCommand('json-formatter-validator.toSql', async () => {
+            const editor = vscode.window.activeTextEditor;
+            if (!editor?.document || editor.document.languageId !== 'json') return;
+
+            try {
+                const jsonObj = JSON.parse(editor.document.getText());
+                const sqlCode = converter.toSql(jsonObj);
+
+                await vscode.env.clipboard.writeText(sqlCode);
+                vscode.window.showInformationMessage('SQL schema copied! 🗄️');
+            } catch {
+                vscode.window.showErrorMessage('Invalid JSON');
+            }
+        }),
+    );
+}
+
