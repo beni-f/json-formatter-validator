@@ -37,28 +37,28 @@ https://marketplace.visualstudio.com/items?itemName=beni-f.json-formatter-valida
 
 ## 1\. Install
 
-`text
+```text
 1. VS Code → Extensions (Ctrl+Shift+X)
 2. Search: "JSON Formatter Validator"
 3. Install → Reload
-`
+```
 
 ## 2\. Basic Usage
 
-`text
+```text
 Open any .json file → Ctrl+Shift+P → "JSON Formatter Validator: Format JSON"
-`
+```
 
 ## 3\. Auto-Format (Default)
 
-`text
+```text
 1. Edit JSON → Ctrl+S
 2. Auto-formatted with 2 spaces
-`
+```
 
 ## Commands (Ctrl+Shift+P)
 
-`text
+```text
 JSON Formatter Validator: Format JSON          ← Shift+Alt+F
 JSON Formatter Validator: Validate JSON        ← Status bar click
 JSON Formatter Validator: Minify JSON          ← One line
@@ -66,7 +66,7 @@ JSON Formatter Validator: Sort Keys            ← Alphabetical
 JSON Formatter Validator: Copy Formatted JSON  ← Clipboard
 JSON Formatter Validator: Clear Errors         ← Reset highlights
 JSON Formatter Validator: Toggle Comments Mode ← Config toggle
-`
+```
 
 ## Settings (Ctrl+,)
 
