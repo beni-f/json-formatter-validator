@@ -1,123 +1,123 @@
 {
-  "name": "json-formatter-validator-extension",
-  "displayName": "JSON Formatter & Validator Extension",
-  "description": "Format, validate, minify, sort JSON with real-time errors & auto-format",
-  "version": "1.2.3",
-  "publisher": "beni-f",
-  "engines": {
-    "vscode": "^1.90.0"
-  },
-  "categories": [
-    "Formatters"
-  ],
-  "keywords": [
-    "json",
-    "formatter",
-    "validator",
-    "prettify",
-    "minify"
-  ],
-  "activationEvents": [
-    "onLanguage:json"
-  ],
-  "main": "./out/extension.js",
-  "icon": "images/icon.png",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/beni-f/json-formatter-validator.git"
-  },
-  "bugs": {
-    "url": "https://github.com/beni-f/json-formatter-validator/issues"
-  },
-  "contributes": {
-    "commands": [
-      {
-        "command": "json-formatter-validator.format",
-        "title": "JSON Formatter Validator: Format JSON"
-      },
-      {
-        "command": "json-formatter-validator.validate",
-        "title": "JSON Formatter Validator: Validate JSON"
-      },
-      {
-        "command": "json-formatter-validator.copyFormatted",
-        "title": "JSON Formatter Validator: Copy Formatted JSON"
-      },
-      {
-        "command": "json-formatter-validator.clearErrors",
-        "title": "JSON Formatter Validator: Clear Errors"
-      },
-      {
-        "command": "json-formatter-validator.minify",
-        "title": "JSON Formatter Validator: Minify JSON"
-      },
-      {
-        "command": "json-formatter-validator.sortKeys",
-        "title": "JSON Formatter Validator: Sort Keys"
-      },
-      {
-        "command": "json-formatter-validator.toggleComments",
-        "title": "JSON Formatter Validator: Toggle Comments Mode"
-      }
-    ]
-  },
-  "configuration": {
-    "title": "JSON Formatter Validator",
-    "properties": {
-      "json-formatter-validator.formatOnSave": {
-        "type": "boolean",
-        "default": true,
-        "description": "Automatically format JSON on save"
-      },
-      "json-formatter-validator.indentSize": {
-        "type": "number",
-        "default": 2,
-        "description": "Indentation size for formatting"
-      },
-      "json-formatter-validator.validateOnSave": {
-        "type": "boolean",
-        "default": true,
-        "description": "Validate JSON on save"
-      }
+    "name": "json-formatter-validator-extension",
+    "displayName": "JSON Formatter & Validator Extension",
+    "description": "Format, validate, minify, sort JSON with real-time errors & auto-format",
+    "version": "1.2.2",
+    "publisher": "beni-f",
+    "engines": {
+        "vscode": "^1.90.0"
+    },
+    "categories": [
+        "Formatters"
+    ],
+    "keywords": [
+        "json",
+        "formatter",
+        "validator",
+        "prettify",
+        "minify"
+    ],
+    "activationEvents": [
+        "onLanguage:json"
+    ],
+    "main": "./out/extension.js",
+    "icon": "images/icon.png",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/beni-f/json-formatter-validator.git"
+    },
+    "bugs": {
+        "url": "https://github.com/beni-f/json-formatter-validator/issues"
+    },
+    "contributes": {
+        "commands": [
+            {
+                "command": "json-formatter-validator.format",
+                "title": "JSON Formatter Validator: Format JSON"
+            },
+            {
+                "command": "json-formatter-validator.validate",
+                "title": "JSON Formatter Validator: Validate JSON"
+            },
+            {
+                "command": "json-formatter-validator.copyFormatted",
+                "title": "JSON Formatter Validator: Copy Formatted JSON"
+            },
+            {
+                "command": "json-formatter-validator.clearErrors",
+                "title": "JSON Formatter Validator: Clear Errors"
+            },
+            {
+                "command": "json-formatter-validator.minify",
+                "title": "JSON Formatter Validator: Minify JSON"
+            },
+            {
+                "command": "json-formatter-validator.sortKeys",
+                "title": "JSON Formatter Validator: Sort Keys"
+            },
+            {
+                "command": "json-formatter-validator.toggleComments",
+                "title": "JSON Formatter Validator: Toggle Comments Mode"
+            }
+        ]
+    },
+    "configuration": {
+        "title": "JSON Formatter Validator",
+        "properties": {
+            "json-formatter-validator.formatOnSave": {
+                "type": "boolean",
+                "default": true,
+                "description": "Automatically format JSON on save"
+            },
+            "json-formatter-validator.indentSize": {
+                "type": "number",
+                "default": 2,
+                "description": "Indentation size for formatting"
+            },
+            "json-formatter-validator.validateOnSave": {
+                "type": "boolean",
+                "default": true,
+                "description": "Validate JSON on save"
+            }
+        }
+    },
+    "json-formatter-validator": {
+        "type": "object",
+        "properties": {
+            "indentSize": {
+                "type": "number",
+                "default": 2,
+                "minimum": 1
+            },
+            "allowComments": {
+                "type": "boolean",
+                "default": true
+            },
+            "allowTrailingComma": {
+                "type": "boolean",
+                "default": true
+            },
+            "liveValidation": {
+                "type": "boolean",
+                "default": true
+            },
+            "insertTrailingComma": {
+                "type": "boolean",
+                "default": true
+            }
+        }
+    },
+    "scripts": {
+        "vscode:prepublish": "npm run compile",
+        "compile": "tsc -p ./",
+        "watch": "tsc -watch -p ./"
+    },
+    "dependencies": {
+        "jsonc-parser": "^3.3.1"
+    },
+    "devDependencies": {
+        "@types/node": "^25.0.3",
+        "@types/vscode": "^1.90.0",
+        "typescript": "^5.9.3"
     }
-  },
-  "json-formatter-validator": {
-    "type": "object",
-    "properties": {
-      "indentSize": {
-        "type": "number",
-        "default": 2,
-        "minimum": 1
-      },
-      "allowComments": {
-        "type": "boolean",
-        "default": true
-      },
-      "allowTrailingComma": {
-        "type": "boolean",
-        "default": true
-      },
-      "liveValidation": {
-        "type": "boolean",
-        "default": true
-      },
-      "insertTrailingComma": {
-        "type": "boolean",
-        "default": true
-      }
-    }
-  },
-  "scripts": {
-    "vscode:prepublish": "npm run compile",
-    "compile": "tsc -p ./",
-    "watch": "tsc -watch -p ./"
-  },
-  "dependencies": {
-    "jsonc-parser": "^3.3.1"
-  },
-  "devDependencies": {
-    "@types/node": "^25.0.3",
-    "@types/vscode": "^1.90.0",
-    "typescript": "^5.9.3"
-  }
 }
