@@ -163,15 +163,16 @@ test/large.json        → 1MB+ performance
 ```pgsql
 src/
 ├── extension.ts          # Main activation + 12 commands
-├── compiler/            # Schema synthesis + multi-target
-│   ├── SchemaSynthesizer.ts
-│   └── CodeGenerator.ts
-├── commands/            # Formatter/Validator suite
+├── compiler/            # Formatter/Validator suite
 │   ├── formatting.ts
-│   ├── validation.ts
-│   └── codegen/        # TS/Go/Rust/SQL
-├── webview/             # Compiler pipeline UI
-│   └── CompilerPanel.ts
+│   ├── compile-command.ts
+│   └── clipboard.ts
+├── commands/            # Schema synthesis + multi-target
+│   ├── schema-synethesizer.ts
+│   ├── pipeline.ts
+│   └── codegen.ts       # TS/Go/Rust/SQL
+├── ui/             # Compiler pipeline UI
+│   └── compiler-panel.ts
 └── utils/               # Performance + helpers
 ```
 
