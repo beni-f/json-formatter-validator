@@ -1,5 +1,5 @@
 import * as vscode from 'vscode';
-import { parseJsonError } from '../utils/helpers';
+import { parseJsonError } from '../utils/helper';
 
 export function registerValidationCommands(context: vscode.ExtensionContext, diagnosticCollection: vscode.DiagnosticCollection) {
     context.subscriptions.push(
