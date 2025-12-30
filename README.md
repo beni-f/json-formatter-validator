@@ -1,4 +1,4 @@
-# JSON Formatter & Validator
+# JSON Formatter, Validator and Compiler
 
 ![VS Code](https://img.shields.io/badge/VS%20Code-Extension-blue)
 ![TypeScript](https://img.shields.io/badge/TypeScript-5-blue)
